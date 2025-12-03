@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,317 +9,264 @@
     <!-- Orbitron Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-    :root {
-        --neon: #ff0033; /* 🔴 NEW TRON RED GLOW */
-        --white-soft: rgba(255,255,255,0.85);
-    }
+    <style>
+        :root {
+            --neon-blue: #00eaff;
+            --soft-white: rgba(255, 255, 255, 0.9);
+        }
 
-    * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-        margin: 0;
-        background: #000814;
-        font-family: Arial, sans-serif;
-        color: white;
-        overflow-x: hidden;
-        position: relative;
-    }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #000d18, #000814, #00121a);
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    /* --------------------------------------------------
-       🔴 TRON RED SCANLINE LIGHT SWEEP
-    -------------------------------------------------- */
-    .scan-sweep {
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(
-            rgba(255,0,40,0.05),
-            rgba(255,0,40,0.15),
-            rgba(255,0,40,0.05)
-        );
-        animation: sweepMove 8s linear infinite;
-        pointer-events: none;
-        z-index: -3;
-        mix-blend-mode: screen;
-    }
-    @keyframes sweepMove {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(100%); }
-    }
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.45);
+            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+        }
 
-    /* --------------------------------------------------
-       🔴 Soft Vignette Only (Clean Background)
-    -------------------------------------------------- */
-    .clean-vignette {
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(circle, transparent 45%, rgba(0,0,0,0.55) 100%);
-        z-index: -1;
-        pointer-events: none;
-    }
+        .nav-inner {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* --------------------------------------------------
-       🔴 NAVBAR — Clean TRON RED Style
-    -------------------------------------------------- */
-    .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(15px);
-        background: rgba(0,0,0,0.45);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .nav-inner {
-        max-width: 1150px;
-        margin: auto;
-        padding: 15px 25px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .nav-left { display: flex; align-items: center; gap: 16px; }
+        /* CLEAN LOGO (No glow, Tron outline only) */
+        .logo-frame {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
 
-    /* 🔴 TRON RED LOGO ENERGY PAD */
-    .tron-logo-pad {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: radial-gradient(
-            circle,
-            rgba(255,0,40,0.35) 0%,
-            rgba(255,0,40,0.15) 40%,
-            rgba(255,0,40,0.06) 70%,
-            transparent 100%
-        );
-        box-shadow:
-            0 0 22px rgba(255,0,40,0.6),
-            0 0 40px rgba(255,0,40,0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(6px);
-    }
+        .logo-frame img {
+            width: 70%;
+            height: auto;
+            filter: none;
+        }
 
-    .tron-logo-pad img {
-        width: 68%;
-        height: auto;
-        filter: drop-shadow(0 0 12px rgba(255,0,40,0.9));
-    }
+        .nav-title {
+            font-family: Orbitron;
+            letter-spacing: 0.12em;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-    .nav-title {
-        font-family: Orbitron;
-        letter-spacing: 0.11em;
-        font-size: 20px;
-        font-weight: 600;
-    }
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+        }
 
-    .nav-menu { display: flex; gap: 26px; }
-    .nav-link {
-        color: white;
-        opacity: 0.85;
-        font-family: Orbitron;
-        font-size: 14px;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-    .nav-link:hover {
-        opacity: 1;
-        color: var(--neon);
-    }
+        .nav-link {
+            color: white;
+            opacity: 0.85;
+            font-family: Orbitron;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
-    /* --------------------------------------------------
-       🔴 HERO SECTION
-    -------------------------------------------------- */
-    .hero {
-        text-align: center;
-        padding: 140px 20px 70px;
-    }
-    .hero-title {
-        font-family: Orbitron;
-        font-size: 58px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-    }
-    .hero-sub {
-        font-size: 20px;
-        margin-top: 15px;
-        color: var(--white-soft);
-    }
+        .nav-link:hover {
+            opacity: 1;
+            color: var(--neon-blue);
+        }
 
-    /* --------------------------------------------------
-       🔴 SECTION CONTENT
-    -------------------------------------------------- */
-    section {
-        padding: 70px 20px;
-        max-width: 1100px;
-        margin: auto;
-    }
-    h2 {
-        font-family: Orbitron;
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-    p {
-        font-size: 16px;
-        line-height: 1.7em;
-        color: var(--white-soft);
-    }
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 140px 20px 70px;
+        }
 
-    /* --------------------------------------------------
-       🔴 TRON RED SERVICE CARDS
-    -------------------------------------------------- */
-    .services-grid {
-        display: grid;
-        gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        margin-top: 25px;
-    }
+        .hero-title {
+            font-family: Orbitron;
+            font-size: 60px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 10px;
+        }
 
-    .card {
-        background: rgba(255,255,255,0.05);
-        padding: 22px;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.08);
-        backdrop-filter: blur(6px);
-        transition: 0.35s;
-        position: relative;
-        overflow: hidden;
-    }
+        .hero-sub {
+            font-size: 18px;
+            margin-top: 10px;
+            color: var(--soft-white);
+            letter-spacing: 0.05em;
+        }
 
-    .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 14px;
-        border: 2px solid rgba(255,0,40,0.4);
-        filter: blur(8px);
-        opacity: 0;
-        transition: 0.3s ease;
-    }
+        /* SECTIONS */
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-    .card:hover::before { opacity: 1; }
-    .card:hover { transform: translateY(-8px); }
+        h2 {
+            font-family: Orbitron;
+            font-size: 32px;
+            margin-bottom: 18px;
+            color: var(--soft-white);
+        }
 
-    .card h3 {
-        font-family: Orbitron;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
+        p {
+            font-size: 16px;
+            color: var(--soft-white);
+            line-height: 1.7em;
+        }
 
-    footer {
-        text-align: center;
-        padding: 25px;
-        opacity: 0.7;
-        margin-top: 50px;
-        font-size: 14px;
-    }
-</style>
+        .services-grid {
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            margin-top: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 22px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border: 1px solid var(--neon-blue);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-family: Orbitron;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            opacity: 0.7;
+            margin-top: 50px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Clean Tron Layers -->
-<div class="scan-sweep"></div>
-<div class="clean-vignette"></div>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <div class="logo-frame">
+                    <img src="pynx-logo-transparent.png" alt="PYNX Logo">
+                </div>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="nav-inner">
-
-        <div class="nav-left">
-            <div class="tron-logo-pad">
-                <img src="pynx-logo-transparent.png" alt="PYNX Logo">
+                <div class="nav-title">PYNX WealthTech</div>
             </div>
-            <div class="nav-title">PYNX WealthTech</div>
-        </div>
 
-        <div class="nav-menu">
-            <a class="nav-link" href="#home">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#services">Services</a>
-            <a class="nav-link" href="#founder">Founder</a>
-            <a class="nav-link" href="#contact">Contact</a>
+            <div class="nav-menu">
+                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="#services">Services</a>
+                <a class="nav-link" href="#founder">Founder</a>
+                <a class="nav-link" href="#contact">Contact</a>
+            </div>
         </div>
-
     </div>
-</div>
 
-<!-- HERO -->
-<div class="hero" id="home">
-    <div class="hero-title">PYNX WEALTHTECH</div>
-    <div class="hero-sub">Wealth-Tech for the Future</div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About Us</h2>
-    <p>
-        PYNX WealthTech ek future-ready system-building platform hai jo
-        automation, structure, discipline aur rule-based trading ko priority deta hai.
-        Hamara vision: Every trader should operate with a system, not emotion.
-    </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-    <h2>Our Services</h2>
-
-    <div class="services-grid">
-
-        <div class="card">
-            <h3>Crypto Market Automation</h3>
-            <p>
-                BTC, ETH, SOL ke liye advanced algo engines — volatility-based entries, ATR exits.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Stock Market Algo Trading</h3>
-            <p>
-                NIFTY, BANKNIFTY, NAS100 ke liye institutional-level trend systems.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Gold (XAUUSD) & FX Bots</h3>
-            <p>
-                High-volatility paired bots — smart exits, time filters, session logic.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Custom Trading Bots</h3>
-            <p>
-                MT5 EA, Python automation, WhatsApp/Telegram alert bots — fully custom.
-            </p>
-        </div>
-
+    <!-- HERO -->
+    <div class="hero" id="home">
+        <div class="hero-title">PYNX WEALTHTECH</div>
+        <div class="hero-sub">Wealth-Tech for the Future</div>
     </div>
-</section>
 
-<!-- FOUNDER -->
-<section id="founder">
-    <h2>Founder</h2>
-    <p>
-        <b>Krunal Chawada</b> — Market Structure Specialist & System Designer.<br>
-        Focus: Behavior mapping, liquidity structure & disciplined execution.
-    </p>
-</section>
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>
+            PYNX WealthTech ek future-ready system-building platform hai jo automation, structure,
+            discipline aur rule-based trading ko priority deta hai. Hamara vision: Every trader should
+            operate with a system, not emotion.
+        </p>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p>
-        📍 India (IST)<br>
-        📱 WhatsApp: +91 93270 27629<br><br>
-        TRON-level automation & advanced system building ke liye connect karein.
-    </p>
-</section>
+    <!-- SERVICES -->
+    <section id="services">
+        <h2>Our Services</h2>
 
-<footer>
-    © 2025 PYNX WealthTech — All Rights Reserved
-</footer>
+        <div class="services-grid">
+
+            <div class="card">
+                <h3>Crypto Market Automation</h3>
+                <p>Automated engines for BTC, ETH, SOL with volatility logic, ATR stops & smart exits.</p>
+            </div>
+
+            <div class="card">
+                <h3>Stock Market Algo Trading</h3>
+                <p>Trend + breakout systems for NIFTY, BANKNIFTY, NAS100 with professional rules.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gold (XAUUSD) & FX Systems</h3>
+                <p>High-volatility models built with multi-timeframe logic & session-based planning.</p>
+            </div>
+
+            <div class="card">
+                <h3>Custom Trading Bots</h3>
+                <p>Full MT5 automation, Telegram/WhatsApp alerts, Python bots & custom strategies.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section id="founder">
+        <h2>Founder</h2>
+        <p>
+            <b>Krunal Chawada</b> — Systems Designer & Market Structure Specialist.<br>
+            Focus: Rule-based execution, liquidity mapping, disciplined trading psychology.
+        </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>
+            📍 India (IST)<br>
+            📱 WhatsApp: +91 93270 27629<br><br>
+            Automation, bot development & serious trading setups ke liye direct connect karein.
+        </p>
+    </section>
+
+    <footer>
+        © 2025 PYNX WealthTech — All Rights Reserved
+    </footer>
 
 </body>
+
 </html>
