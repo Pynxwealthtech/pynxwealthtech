@@ -10,8 +10,7 @@
 
 <style>
     :root {
-        --neon: #00eaff;
-        --grid: rgba(0, 255, 200, 0.18);
+        --neon: #ff0033; /* 🔴 NEW TRON RED GLOW */
         --white-soft: rgba(255,255,255,0.85);
     }
 
@@ -27,49 +26,19 @@
     }
 
     /* --------------------------------------------------
-       🔵 TRON ANIMATED GRID BACKGROUND
-    -------------------------------------------------- */
-    .tron-grid {
-        position: fixed;
-        inset: 0;
-        background:
-            repeating-linear-gradient(
-                to right,
-                var(--grid) 0px,
-                var(--grid) 2px,
-                transparent 2px,
-                transparent 65px
-            ),
-            repeating-linear-gradient(
-                to bottom,
-                var(--grid) 0px,
-                var(--grid) 2px,
-                transparent 2px,
-                transparent 65px
-            );
-        animation: tronMove 14s linear infinite;
-        z-index: -10;
-        opacity: 0.35;
-    }
-    @keyframes tronMove {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-140px); }
-    }
-
-    /* --------------------------------------------------
-       🔵 TRON SCANLINE LIGHT SWEEP
+       🔴 TRON RED SCANLINE LIGHT SWEEP
     -------------------------------------------------- */
     .scan-sweep {
         position: fixed;
         inset: 0;
         background: linear-gradient(
-            rgba(0,255,200,0.05),
-            rgba(0,255,200,0.15),
-            rgba(0,255,200,0.05)
+            rgba(255,0,40,0.05),
+            rgba(255,0,40,0.15),
+            rgba(255,0,40,0.05)
         );
-        animation: sweepMove 6s linear infinite;
+        animation: sweepMove 8s linear infinite;
         pointer-events: none;
-        z-index: -5;
+        z-index: -3;
         mix-blend-mode: screen;
     }
     @keyframes sweepMove {
@@ -78,25 +47,18 @@
     }
 
     /* --------------------------------------------------
-       🔵 BLUEPRINT MICROTEXTURE + VIGNETTE
+       🔴 Soft Vignette Only (Clean Background)
     -------------------------------------------------- */
-    body::after {
-        content: "";
+    .clean-vignette {
         position: fixed;
         inset: 0;
-        background: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-        opacity: 0.06;
-        z-index: -2;
-    }
-    .blueprint-vignette {
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.5) 100%);
+        background: radial-gradient(circle, transparent 45%, rgba(0,0,0,0.55) 100%);
         z-index: -1;
+        pointer-events: none;
     }
 
     /* --------------------------------------------------
-       🔵 NAVBAR — TRON ARES STYLE
+       🔴 NAVBAR — Clean TRON RED Style
     -------------------------------------------------- */
     .navbar {
         position: sticky;
@@ -114,36 +76,34 @@
         justify-content: space-between;
         align-items: center;
     }
-    .nav-left {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
 
-    /* 🔵 TRON ENERGY PAD BEHIND LOGO */
+    .nav-left { display: flex; align-items: center; gap: 16px; }
+
+    /* 🔴 TRON RED LOGO ENERGY PAD */
     .tron-logo-pad {
         width: 56px;
         height: 56px;
         border-radius: 50%;
         background: radial-gradient(
             circle,
-            rgba(0, 255, 200, 0.35) 0%,
-            rgba(0, 255, 200, 0.18) 40%,
-            rgba(0, 255, 200, 0.06) 70%,
+            rgba(255,0,40,0.35) 0%,
+            rgba(255,0,40,0.15) 40%,
+            rgba(255,0,40,0.06) 70%,
             transparent 100%
         );
         box-shadow:
-            0 0 22px rgba(0,255,200,0.55),
-            0 0 40px rgba(0,255,200,0.25);
+            0 0 22px rgba(255,0,40,0.6),
+            0 0 40px rgba(255,0,40,0.25);
         display: flex;
         align-items: center;
         justify-content: center;
         backdrop-filter: blur(6px);
     }
+
     .tron-logo-pad img {
         width: 68%;
         height: auto;
-        filter: drop-shadow(0 0 10px rgba(0,255,200,0.9));
+        filter: drop-shadow(0 0 12px rgba(255,0,40,0.9));
     }
 
     .nav-title {
@@ -168,7 +128,7 @@
     }
 
     /* --------------------------------------------------
-       🔵 HERO SECTION (without logo)
+       🔴 HERO SECTION
     -------------------------------------------------- */
     .hero {
         text-align: center;
@@ -187,7 +147,7 @@
     }
 
     /* --------------------------------------------------
-       🔵 SECTIONS
+       🔴 SECTION CONTENT
     -------------------------------------------------- */
     section {
         padding: 70px 20px;
@@ -206,7 +166,7 @@
     }
 
     /* --------------------------------------------------
-       🔵 TRON SERVICE CARDS
+       🔴 TRON RED SERVICE CARDS
     -------------------------------------------------- */
     .services-grid {
         display: grid;
@@ -219,33 +179,26 @@
         background: rgba(255,255,255,0.05);
         padding: 22px;
         border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.08);
         backdrop-filter: blur(6px);
         transition: 0.35s;
         position: relative;
         overflow: hidden;
     }
 
-    /* TRON glowing border animation */
     .card::before {
         content: "";
         position: absolute;
         inset: 0;
         border-radius: 14px;
-        border: 2px solid rgba(0,255,200,0.35);
+        border: 2px solid rgba(255,0,40,0.4);
         filter: blur(8px);
         opacity: 0;
         transition: 0.3s ease;
     }
 
-    .card:hover::before {
-        opacity: 1;
-        box-shadow: 0 0 24px rgba(0,255,200,0.35);
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-    }
+    .card:hover::before { opacity: 1; }
+    .card:hover { transform: translateY(-8px); }
 
     .card h3 {
         font-family: Orbitron;
@@ -253,9 +206,6 @@
         margin-bottom: 10px;
     }
 
-    /* --------------------------------------------------
-       🔵 FOOTER
-    -------------------------------------------------- */
     footer {
         text-align: center;
         padding: 25px;
@@ -263,16 +213,14 @@
         margin-top: 50px;
         font-size: 14px;
     }
-
 </style>
 </head>
 
 <body>
 
-<!-- TRON Background Layers -->
-<div class="tron-grid"></div>
+<!-- Clean Tron Layers -->
 <div class="scan-sweep"></div>
-<div class="blueprint-vignette"></div>
+<div class="clean-vignette"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -364,7 +312,7 @@
     <p>
         📍 India (IST)<br>
         📱 WhatsApp: +91 93270 27629<br><br>
-        TRON-level automation & advanced system building ke liye directly connect karein.
+        TRON-level automation & advanced system building ke liye connect karein.
     </p>
 </section>
 
