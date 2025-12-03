@@ -10,69 +10,109 @@
 
 <style>
     :root {
-        --neon: #00ffb0; /* neon green */
+        --neon: #00eaff;
+        --grid: rgba(0, 255, 200, 0.18);
         --white-soft: rgba(255,255,255,0.85);
     }
 
-    * { box-sizing: border-box; }
+    * {
+        box-sizing: border-box;
+    }
 
     body {
         margin: 0;
-        background: radial-gradient(circle at center, #002a55, #000814);
+        background: #000814;
         font-family: Arial, sans-serif;
         color: white;
         overflow-x: hidden;
         position: relative;
     }
 
-    /* 🔷 Green Futuristic Blueprint */
-    body::before {
-        content: "";
+    /* -----------------------------------------
+       🔷 TRON Animated Grid Background
+    ------------------------------------------ */
+    .tron-grid {
         position: fixed;
         inset: 0;
-        background-image:
-            linear-gradient(rgba(0,255,160,0.10) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,255,160,0.10) 1px, transparent 1px),
-            radial-gradient(circle at center,
-                rgba(0,255,160,0.25) 0%,
-                rgba(0,255,160,0.12) 35%,
-                rgba(0,255,160,0.04) 60%,
-                transparent 100%
+        background:
+            repeating-linear-gradient(
+                to right,
+                var(--grid) 0px,
+                var(--grid) 2px,
+                transparent 2px,
+                transparent 65px
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                var(--grid) 0px,
+                var(--grid) 2px,
+                transparent 2px,
+                transparent 65px
             );
-        background-size: 45px 45px, 45px 45px, 900px 900px;
-        opacity: 0.55;
-        z-index: -3;
+        animation: tronMove 14s linear infinite;
+        z-index: -10;
+        opacity: 0.35;
     }
 
-    /* Micro Texture Layer */
+    @keyframes tronMove {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-140px); }
+    }
+
+    /* -----------------------------------------
+       🔷 TRON Scanline Glow Effect
+    ------------------------------------------ */
+    .scan-sweep {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+            rgba(0,255,200,0.04),
+            rgba(0,255,200,0.12),
+            rgba(0,255,200,0.04)
+        );
+        mix-blend-mode: screen;
+        animation: sweepMove 6s linear infinite;
+        pointer-events: none;
+        z-index: -5;
+    }
+
+    @keyframes sweepMove {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    /* -----------------------------------------
+       🔷 Blueprint Texture
+    ------------------------------------------ */
     body::after {
         content: "";
         position: fixed;
         inset: 0;
         background: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-        opacity: 0.09;
+        opacity: 0.06;
         z-index: -2;
         pointer-events: none;
     }
 
-    /* Vignette Depth */
     .blueprint-vignette {
         position: fixed;
         inset: 0;
-        background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.35) 100%);
+        background: radial-gradient(circle, transparent 25%, rgba(0,0,0,0.4) 100%);
         z-index: -1;
-        pointer-events: none;
     }
 
-    /* NAVBAR */
+    /* -----------------------------------------
+       🔷 NAVBAR
+    ------------------------------------------ */
     .navbar {
         position: sticky;
         top: 0;
         z-index: 20;
         backdrop-filter: blur(12px);
         background: rgba(0,0,0,0.35);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
     .nav-inner {
         max-width: 1150px;
         margin: 0 auto;
@@ -82,17 +122,17 @@
         align-items: center;
     }
 
-    .nav-left { display: flex; align-items: center; gap: 12px; }
-
-    /* 🔥 NAVBAR Transparent Logo (no circle) */
-    .nav-logo {
-        width: 42px;
-        height: 42px;
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
-    .nav-logo img {
-        width: 100%;
+
+    /* NEW: Glow Removed - Clean Logo */
+    .logo-img {
+        width: 42px;
         height: auto;
-        filter: drop-shadow(0 0 15px rgba(0,255,180,0.85));
+        border-radius: 6px;
     }
 
     .nav-title {
@@ -103,6 +143,7 @@
     }
 
     .nav-menu { display: flex; gap: 24px; }
+
     .nav-link {
         color: white;
         opacity: 0.85;
@@ -111,40 +152,37 @@
         text-decoration: none;
         transition: 0.3s;
     }
-    .nav-link:hover { opacity: 1; }
 
-    /* HERO */
+    .nav-link:hover {
+        opacity: 1;
+        color: var(--neon);
+    }
+
+    /* -----------------------------------------
+       🔷 HERO Section — Logo Removed
+    ------------------------------------------ */
     .hero {
         text-align: center;
-        padding: 120px 20px 80px;
-    }
-
-    /* LOGO — Transparent + Glow */
-    .logo-wrapper {
-        width: 360px;
-        margin: 0 auto 15px;
-    }
-    .logo-wrapper img {
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 0 35px rgba(0,255,180,0.6));
+        padding: 120px 20px 60px;
     }
 
     .hero-title {
         font-family: Orbitron;
-        font-size: 46px;
+        font-size: 54px;
         font-weight: 700;
-        letter-spacing: 0.10em;
-        margin-top: 10px;
+        letter-spacing: 0.12em;
     }
+
     .hero-sub {
-        font-size: 18px;
-        margin-top: 10px;
+        font-size: 20px;
+        margin-top: 15px;
         color: var(--white-soft);
         letter-spacing: 0.05em;
     }
 
-    /* SECTIONS */
+    /* -----------------------------------------
+       🔷 Sections
+    ------------------------------------------ */
     section {
         padding: 70px 20px;
         max-width: 1100px;
@@ -163,7 +201,9 @@
         line-height: 1.7em;
     }
 
-    /* Cards */
+    /* -----------------------------------------
+       🔷 Service Cards
+    ------------------------------------------ */
     .services-grid {
         display: grid;
         gap: 25px;
@@ -182,7 +222,7 @@
 
     .card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 0 25px rgba(0,255,180,0.35);
+        box-shadow: 0 0 25px rgba(0,255,200,0.35);
     }
 
     .card h3 {
@@ -191,7 +231,9 @@
         font-size: 20px;
     }
 
-    /* FOOTER */
+    /* -----------------------------------------
+       🔷 Footer
+    ------------------------------------------ */
     footer {
         text-align: center;
         padding: 25px;
@@ -200,22 +242,22 @@
         font-size: 14px;
         border-top: 1px solid rgba(255,255,255,0.1);
     }
+
 </style>
 </head>
 
 <body>
 
+<!-- Background Layers -->
+<div class="tron-grid"></div>
+<div class="scan-sweep"></div>
 <div class="blueprint-vignette"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-inner">
-
         <div class="nav-left">
-            <div class="nav-logo">
-                <img src="pynx-logo-transparent.png" alt="PYNX Logo">
-            </div>
-
+            <img src="pynx-logo-transparent.png" class="logo-img" alt="PYNX Logo">
             <div class="nav-title">PYNX WealthTech</div>
         </div>
 
@@ -226,16 +268,11 @@
             <a class="nav-link" href="#founder">Founder</a>
             <a class="nav-link" href="#contact">Contact</a>
         </div>
-
     </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO - no logo -->
 <div class="hero" id="home">
-    <div class="logo-wrapper">
-        <img src="pynx-logo-transparent.png" alt="logo">
-    </div>
-
     <div class="hero-title">PYNX WEALTHTECH</div>
     <div class="hero-sub">Wealth-Tech for the Future</div>
 </div>
@@ -245,49 +282,34 @@
     <h2>About Us</h2>
     <p>
         PYNX WealthTech ek future-ready platform hai jiska aim markets ko predictable,
-        structured & technology-driven banana hai. Hamara focus system-based trading,
-        automation aur disciplined execution par hai. Hum retail traders ko institutional-level
-        frameworks provide karte hain — jisse emotional trading kam hoti hai aur long-term
-        sustainable results milte hain.
+        structured & technology-driven banana hai. Hum discipline, automation & 
+        system-based execution bring karte hain — emotional trading ko replace karke long-term stability banate hain.
     </p>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
     <h2>Our Services</h2>
-
     <div class="services-grid">
 
         <div class="card">
             <h3>Crypto Market Automation</h3>
-            <p>
-                Smart entry/exit engines, volatility-based logic, ATR stop-loss, and automated
-                capital protection — BTC, ETH, SOL markets ke liye fully optimized systems.
-            </p>
+            <p>BTC, ETH, SOL markets ke liye advanced volatility engines, ATR exits & smart algos.</p>
         </div>
 
         <div class="card">
             <h3>Stock Market Algo Trading</h3>
-            <p>
-                Trend + breakout + pullback based systems for NIFTY, BANKNIFTY, NAS100 —
-                with strict time filters and risk-managed intraday logic.
-            </p>
+            <p>NIFTY, BANKNIFTY, NAS100 ke liye trend + breakout + pullback based systems.</p>
         </div>
 
         <div class="card">
-            <h3>Gold (XAUUSD) & FX Systems</h3>
-            <p>
-                High-volatility optimized bots with multi-timeframe confirmation, session logic
-                and dynamic exit management.
-            </p>
+            <h3>Gold (XAUUSD) & FX Bots</h3>
+            <p>High-volatility optimized bots with multi-timeframe confirmation & dynamic exits.</p>
         </div>
 
         <div class="card">
             <h3>Custom Trading Bots</h3>
-            <p>
-                MT5 EAs, Python automation, Telegram/WhatsApp alerts — or your custom
-                logic converted into a complete trading bot.
-            </p>
+            <p>MT5 EAs, Python scripts, WhatsApp/Telegram automation — fully custom builds.</p>
         </div>
 
     </div>
@@ -297,8 +319,7 @@
 <section id="founder">
     <h2>Founder</h2>
     <p>
-        <b>Krunal Chawada</b> – Systems Designer & Market Structure Specialist.<br>
-        Focus: Rule-based frameworks, liquidity mapping, disciplined execution.<br>
+        <b>Krunal Chawada</b> – Market Structure Specialist & Systems Designer.<br>
         Vision: Every trader should operate with a system, not emotion.
     </p>
 </section>
@@ -309,7 +330,7 @@
     <p>
         📍 India (IST)<br>
         📱 WhatsApp: +91 93270 27629<br><br>
-        Serious trading plans, automation discussions & system building ke liye connect karein.
+        Serious automation + trading system building ke liye contact karein.
     </p>
 </section>
 
