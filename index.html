@@ -10,7 +10,7 @@
 
 <style>
     :root {
-        --neon: #00eaff;
+        --neon: #00ffb0; /* neon green */
         --white-soft: rgba(255,255,255,0.85);
     }
 
@@ -25,18 +25,18 @@
         position: relative;
     }
 
-    /* 🔷 Futuristic Blueprint Background */
+    /* 🔷 Green Futuristic Blueprint */
     body::before {
         content: "";
         position: fixed;
         inset: 0;
         background-image:
-            linear-gradient(rgba(0,180,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,180,255,0.05) 1px, transparent 1px),
+            linear-gradient(rgba(0,255,160,0.10) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,160,0.10) 1px, transparent 1px),
             radial-gradient(circle at center,
-                rgba(0,200,255,0.22) 0%,
-                rgba(0,200,255,0.10) 35%,
-                rgba(0,200,255,0.03) 60%,
+                rgba(0,255,160,0.25) 0%,
+                rgba(0,255,160,0.12) 35%,
+                rgba(0,255,160,0.04) 60%,
                 transparent 100%
             );
         background-size: 45px 45px, 45px 45px, 900px 900px;
@@ -84,17 +84,15 @@
 
     .nav-left { display: flex; align-items: center; gap: 12px; }
 
-    .logo-circle {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 1px solid var(--neon);
-        box-shadow: 0 0 10px var(--neon);
+    /* 🔥 NAVBAR Transparent Logo (no circle) */
+    .nav-logo {
+        width: 42px;
+        height: 42px;
     }
-    .logo-circle img {
+    .nav-logo img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 15px rgba(0,255,180,0.85));
     }
 
     .nav-title {
@@ -121,7 +119,7 @@
         padding: 120px 20px 80px;
     }
 
-    /* LOGO Without Circle — Blending */
+    /* LOGO — Transparent + Glow */
     .logo-wrapper {
         width: 360px;
         margin: 0 auto 15px;
@@ -129,7 +127,7 @@
     .logo-wrapper img {
         width: 100%;
         height: auto;
-        filter: drop-shadow(0 0 35px rgba(0,200,255,0.6));
+        filter: drop-shadow(0 0 35px rgba(0,255,180,0.6));
     }
 
     .hero-title {
@@ -184,7 +182,7 @@
 
     .card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 0 25px rgba(0,200,255,0.35);
+        box-shadow: 0 0 25px rgba(0,255,180,0.35);
     }
 
     .card h3 {
@@ -212,8 +210,9 @@
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-inner">
+
         <div class="nav-left">
-            <div class="logo-circle">
+            <div class="nav-logo">
                 <img src="pynx-logo-transparent.png" alt="PYNX Logo">
             </div>
 
@@ -227,6 +226,7 @@
             <a class="nav-link" href="#founder">Founder</a>
             <a class="nav-link" href="#contact">Contact</a>
         </div>
+
     </div>
 </div>
 
@@ -319,4 +319,3 @@
 
 </body>
 </html>
-
