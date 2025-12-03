@@ -3,131 +3,411 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PYNX WealthTech</title>
+    <title>PYNX WealthTech – Wealth-Tech for the Future</title>
 
     <style>
+        :root {
+            --bg-dark: #00152b;
+            --bg-mid: #002b57;
+            --bg-light: #004b9a;
+            --accent: #00aaff;
+            --accent-soft: rgba(0, 170, 255, 0.12);
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --text-soft: rgba(255, 255, 255, 0.78);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #001f3f, #003c8f, #0066cc);
+            background: radial-gradient(circle at top, #003f7f 0%, #00152b 50%, #000914 100%);
             color: white;
         }
 
-        .container {
-            text-align: center;
-            padding: 80px 20px;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        h1 {
-            font-size: 48px;
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: linear-gradient(90deg, rgba(0, 15, 40, 0.96), rgba(0, 40, 90, 0.96));
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid rgba(0, 170, 255, 0.7);
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        .nav-logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-title {
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
         }
 
-        h2 {
-            font-size: 22px;
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 40px;
+        .nav-menu {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+        }
+
+        .nav-link {
+            opacity: 0.85;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            border-color: var(--accent);
+        }
+
+        /* LAYOUT */
+
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 18px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--text-soft);
+            margin-bottom: 30px;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding-top: 70px;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 170, 255, 0.8);
+            box-shadow:
+                0 0 20px rgba(0, 170, 255, 0.4),
+                0 0 60px rgba(0, 120, 255, 0.35);
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-soft);
+            margin-bottom: 26px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 12px;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #00ff95;
+            box-shadow: 0 0 10px #00ff95;
         }
 
         .btn-primary {
-            padding: 14px 28px;
-            background: #00aaff;
-            color: white;
-            font-size: 18px;
+            padding: 14px 26px;
+            background: var(--accent);
+            color: #001020;
+            font-size: 16px;
             font-weight: bold;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 999px;
             display: inline-block;
-            transition: 0.3s;
+            transition: 0.25s;
+            box-shadow: 0 6px 16px rgba(0, 170, 255, 0.4);
         }
 
         .btn-primary:hover {
             background: #0088cc;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(0, 170, 255, 0.55);
         }
 
-        .section {
-            padding: 50px 20px;
+        .hero-note {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin-top: 10px;
         }
 
-        h3 {
-            font-size: 28px;
-        }
+        /* ABOUT */
 
-        .services {
-            max-width: 900px;
-            margin: auto;
+        .about-grid {
             display: grid;
-            gap: 25px;
+            gap: 24px;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .about-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .about-card p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-soft);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(0, 170, 255, 0.5);
+        }
+
+        /* SERVICES */
+
+        .services-grid {
+            display: grid;
+            gap: 22px;
         }
 
         .service-box {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: left;
-            backdrop-filter: blur(8px);
+            background: var(--card-bg);
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .footer {
-            margin-top: 60px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4);
+        .service-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .service-box p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-soft);
+        }
+
+        /* FOUNDER */
+
+        .founder-card {
+            display: grid;
+            gap: 18px;
+            background: var(--card-bg);
+            padding: 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .founder-title {
+            font-size: 20px;
+            margin: 0 0 6px;
+        }
+
+        .founder-role {
+            font-size: 13px;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        .founder-text {
+            font-size: 14px;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            background: var(--card-bg);
+            padding: 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
+        }
+
+        .contact-line {
+            font-size: 14px;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
             font-size: 14px;
         }
 
-        @media (min-width: 700px) {
-            .services {
-                grid-template-columns: repeat(2, 1fr);
+        .contact-info strong {
+            color: white;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            font-size: 12px;
+            text-align: center;
+            color: var(--text-soft);
+        }
+
+        @media (min-width: 720px) {
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                grid-template-columns: 2.1fr 1.2fr;
+            }
+
+            .founder-card {
+                grid-template-columns: 2fr 1.4fr;
+                align-items: center;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
-        <h1>PYNX WealthTech</h1>
-        <h2>Wealth-Tech for the Future</h2>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <div class="nav-logo-circle">
+                    <!-- Upload pynx-logo.png in the same folder -->
+                    <img src="pynx-logo.png" alt="PYNX WealthTech Logo">
+                </div>
+                <div class="nav-title">PYNX WealthTech</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#founder" class="nav-link">Founder</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="section hero">
+        <div class="hero-logo">
+            <img src="pynx-logo.png" alt="PYNX WealthTech Logo">
+        </div>
+
+        <div class="hero-pill">
+            <span class="dot"></span>
+            Smart Markets · Smart Automation
+        </div>
+
+        <h1 class="hero-title">PYNX WealthTech</h1>
+        <div class="hero-subtitle">Wealth-Tech for the Future</div>
 
         <a href="https://wa.me/919327027629" class="btn-primary" target="_blank">
             Chat on WhatsApp
         </a>
-    </div>
 
-    <div class="section">
-        <h3>Our Services</h3>
-        <div class="services">
-
-            <div class="service-box">
-                <h4>Crypto Market Automation</h4>
-                <p>AI-based automation for crypto markets with precise entry/exit logic.</p>
-            </div>
-
-            <div class="service-box">
-                <h4>Stock Market Algo Trading</h4>
-                <p>Trend-based & breakout algos optimized with smart risk management.</p>
-            </div>
-
-            <div class="service-box">
-                <h4>Forex & Gold Automated Systems</h4>
-                <p>Pro-level EA systems for high-volatility pairs & XAUUSD.</p>
-            </div>
-
-            <div class="service-box">
-                <h4>Custom Trading Bots</h4>
-                <p>Fully customized bots for Binance, MT5 & Python automation.</p>
-            </div>
-
+        <div class="hero-note">
+            One-to-one discussion for automation, systems & serious trading plans.
         </div>
-    </div>
+    </main>
 
-    <div class="footer">
-        © 2025 PYNX WealthTech — All Rights Reserved
-    </div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>About PYNX</h2>
+        <div class="section-sub">
+            Future-ready wealth-tech focused on automation, discipline and data-driven execution.
+        </div>
 
-</body>
-</html>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>We build trading systems, not just signals.</h3>
+                <p>
+                    PYNX WealthTech ek future-ready platform hai jisme hum crypto, stocks aur forex ke liye
+                    advan
