@@ -1,11 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PYNX WealthTech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
     :root {
         --dark: #000814;
         --deep: #001d3d;
         --blue: #003566;
-        --neon: #00c3ff;
+        --neon: #00eaff;
         --white-soft: rgba(255,255,255,0.85);
-        --glass: rgba(255,255,255,0.05);
     }
 
     * { box-sizing: border-box; }
@@ -14,11 +23,11 @@
         background: radial-gradient(circle at center, #002a55, #000814);
         font-family: Arial, sans-serif;
         color: white;
-        position: relative;
         overflow-x: hidden;
+        position: relative;
     }
 
-    /* BLUEPRINT PATTERN */
+    /* BLUEPRINT BACKGROUND */
     body::before {
         content: "";
         position: fixed;
@@ -28,126 +37,265 @@
             linear-gradient(90deg, rgba(0,150,255,0.07) 1px, transparent 1px),
             radial-gradient(circle, rgba(0,150,255,0.05) 0%, transparent 60%);
         background-size: 40px 40px, 40px 40px, 600px 600px;
-        z-index: -1;
         opacity: 0.35;
+        z-index: -1;
     }
 
     /* NAVBAR */
     .navbar {
         position: sticky;
         top: 0;
-        z-index: 20;
+        z-index: 30;
         backdrop-filter: blur(12px);
-        background: rgba(0,0,0,0.4);
+        background: rgba(0,0,0,0.35);
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-
     .nav-inner {
         max-width: 1150px;
         margin: 0 auto;
-        padding: 14px 20px;
+        padding: 15px 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
     .nav-left { display: flex; align-items: center; gap: 12px; }
-
-    /* LOGO SMALL (NAVBAR) */
     .logo-circle {
-        width: 42px; height: 42px;
+        width: 40px; height: 40px;
         border-radius: 50%;
         overflow: hidden;
-        box-shadow: 0 0 15px #00c3ff;
-        border: 1px solid #00c3ff;
+        border: 1px solid var(--neon);
+        box-shadow: 0 0 10px var(--neon);
     }
     .logo-circle img { width: 100%; height: 100%; }
-
     .nav-title {
         font-family: Orbitron;
-        font-weight: 600;
-        font-size: 18px;
         letter-spacing: 0.1em;
+        font-size: 18px;
+        font-weight: 600;
     }
-
-    .nav-menu { display: flex; gap: 22px; font-size: 14px; }
-    .nav-link { opacity: .85; transition: .3s; font-family: Orbitron; }
+    .nav-menu { display: flex; gap: 24px; }
+    .nav-link {
+        color: white;
+        opacity: 0.85;
+        font-family: Orbitron;
+        font-size: 14px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
     .nav-link:hover { opacity: 1; }
 
-    /* HERO */
+    /* HERO SECTION */
     .hero {
-        padding: 120px 20px 80px;
         text-align: center;
+        padding: 120px 20px 80px;
     }
 
-    /* LOGO MAIN FUTURISTIC RING */
+    /* LOGO — BLENDED WITH BACKGROUND */
     .logo-wrapper {
-        width: 230px;
-        height: 230px;
-        margin: 0 auto 20px;
+        width: 260px;
+        margin: 0 auto 25px;
         position: relative;
     }
 
     .logo-wrapper img {
         width: 100%;
-        height: 100%;
+        height: auto;
         border-radius: 50%;
+        filter: drop-shadow(0 0 18px var(--neon));
     }
 
-    /* OUTER DOUBLE RING */
+    /* Glow aura behind logo */
     .logo-wrapper::before {
         content: "";
         position: absolute;
-        inset: -22px;
+        inset: -40px;
         border-radius: 50%;
-        border: 3px solid rgba(0,200,255,0.6);
-        box-shadow: 
-            0 0 20px #00c3ff,
-            0 0 45px rgba(0,200,255,0.5),
-            inset 0 0 20px rgba(0,200,255,0.4);
-        animation: glowring 4s infinite ease-in-out;
+        background: radial-gradient(circle,
+            rgba(0, 200, 255, 0.25) 0%,
+            rgba(0, 200, 255, 0.12) 35%,
+            rgba(0, 200, 255, 0.03) 60%,
+            transparent 100%
+        );
+        filter: blur(25px);
+        z-index: -1;
     }
 
-    /* INNER RING */
-    .logo-wrapper::after {
-        content: "";
-        position: absolute;
-        inset: -8px;
-        border-radius: 50%;
-        border: 2px solid rgba(0,200,255,0.4);
-        filter: blur(3px);
-        opacity: 0.7;
-    }
-
-    @keyframes glowring {
-        0%, 100% { 
-            box-shadow: 
-                0 0 25px #00c3ff,
-                0 0 55px rgba(0,250,255,0.5),
-                inset 0 0 20px rgba(0,200,255,0.4);
-        }
-        50% {
-            box-shadow: 
-                0 0 40px #00eaff,
-                0 0 80px rgba(0,255,255,0.7),
-                inset 0 0 30px rgba(0,255,255,0.5);
-        }
-    }
-
-    /* HERO TEXT */
     .hero-title {
         font-family: Orbitron;
         font-size: 46px;
-        letter-spacing: 0.12em;
         font-weight: 700;
+        letter-spacing: 0.10em;
+        margin-top: 10px;
     }
-
     .hero-sub {
-        color: var(--white-soft);
-        margin-top: 8px;
         font-size: 18px;
+        margin-top: 10px;
+        color: var(--white-soft);
         letter-spacing: 0.05em;
     }
 
-    /* SECTION STYLE SAME (no change) */
+    /* SECTIONS */
+    section {
+        padding: 70px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    h2 {
+        font-family: Orbitron;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+        color: var(--white-soft);
+        line-height: 1.7em;
+    }
+
+    .services-grid {
+        display: grid;
+        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        margin-top: 25px;
+    }
+    .card {
+        background: rgba(255,255,255,0.05);
+        padding: 22px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(4px);
+        transition: 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 25px rgba(0,200,255,0.35);
+    }
+    .card h3 {
+        font-family: Orbitron;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 25px;
+        opacity: 0.7;
+        margin-top: 50px;
+        font-size: 14px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
 </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <div class="logo-circle">
+                <img src="pynx-logo.png" alt="logo">
+            </div>
+            <div class="nav-title">PYNX WealthTech</div>
+        </div>
+
+        <div class="nav-menu">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#services">Services</a>
+            <a class="nav-link" href="#founder">Founder</a>
+            <a class="nav-link" href="#contact">Contact</a>
+        </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="logo-wrapper">
+        <img src="pynx-logo.png" alt="logo">
+    </div>
+
+    <div class="hero-title">PYNX WEALTHTECH</div>
+    <div class="hero-sub">Wealth-Tech for the Future</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        PYNX WealthTech ek future-ready platform hai jiska aim markets ko predictable,
+        structured & technology-driven banana hai. Hamara focus system-based trading,
+        automation aur disciplined execution par hai. Hum retail traders ko institutional-level
+        frameworks provide karte hain — jisse emotional trading kam hoti hai aur long-term
+        sustainable results milte hain.
+    </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2>Our Services</h2>
+
+    <div class="services-grid">
+
+        <div class="card">
+            <h3>Crypto Market Automation</h3>
+            <p>
+                Smart entry/exit engines, volatility-based logic, ATR stop-loss, and automated
+                capital protection — BTC, ETH, SOL markets ke liye fully optimized systems.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Stock Market Algo Trading</h3>
+            <p>
+                Trend + breakout + pullback based systems for NIFTY, BANKNIFTY, NAS100 —
+                with strict time filters and risk-managed intraday logic.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Gold (XAUUSD) & FX Systems</h3>
+            <p>
+                High-volatility optimized bots with multi-timeframe confirmation, session logic
+                and dynamic exit management.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Custom Trading Bots</h3>
+            <p>
+                MT5 EAs, Python automation, Telegram/WhatsApp alerts — or your custom
+                logic converted into a complete trading bot.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+    <h2>Founder</h2>
+    <p>
+        <b>Krunal Chawada</b> – Systems Designer & Market Structure Specialist.  
+        Unka focus rule-based frameworks, trend behavior mapping, liquidity
+        understanding & disciplined execution par hai.  
+        Vision: Every trader should operate with a system, not emotion.
+    </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
+    <p>
+        📍 India (IST)<br>
+        📱 WhatsApp: +91 93270 27629<br><br>
+        Serious trading plans, automation discussions & system building ke liye direct connect karein.
+    </p>
+</section>
+
+<footer>
+    © 2025 PYNX WealthTech — All Rights Reserved
+</footer>
+
+</body>
+</html>
