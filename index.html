@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +10,10 @@
 
     <style>
         :root {
-            --neon-blue: #00eaff;
-            --soft-white: rgba(255, 255, 255, 0.9);
+            --primary-blue: #0b4f6c;
+            --soft-blue: #cfe9f6;
+            --blueprint-line: rgba(11, 79, 108, 0.18);
+            --text-dark: #08384d;
         }
 
         * {
@@ -21,20 +22,23 @@
 
         body {
             margin: 0;
-            background: linear-gradient(180deg, #000d18, #000814, #00121a);
             font-family: Arial, sans-serif;
-            color: white;
-            overflow-x: hidden;
+            background:
+                linear-gradient(135deg,
+                    rgba(255,255,255,0.7),
+                    rgba(207,233,246,0.95)
+                );
+            color: var(--text-dark);
         }
 
         /* NAVBAR */
         .navbar {
             position: sticky;
             top: 0;
-            z-index: 20;
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.45);
-            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--blueprint-line);
         }
 
         .nav-inner {
@@ -49,32 +53,30 @@
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
-        /* CLEAN LOGO (No glow, Tron outline only) */
         .logo-frame {
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            border: 2px solid var(--neon-blue);
+            border: 2px solid var(--primary-blue);
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: transparent;
+            justify-content: center;
+            background: rgba(255,255,255,0.6);
         }
 
         .logo-frame img {
             width: 70%;
-            height: auto;
-            filter: none;
         }
 
         .nav-title {
             font-family: Orbitron;
-            letter-spacing: 0.12em;
             font-size: 18px;
             font-weight: 600;
+            letter-spacing: 0.22em;
+            color: var(--primary-blue);
         }
 
         .nav-menu {
@@ -83,190 +85,216 @@
         }
 
         .nav-link {
-            color: white;
-            opacity: 0.85;
+            text-decoration: none;
             font-family: Orbitron;
             font-size: 14px;
-            text-decoration: none;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+            opacity: 0.8;
             transition: 0.3s;
         }
 
         .nav-link:hover {
             opacity: 1;
-            color: var(--neon-blue);
+            color: var(--primary-blue);
         }
 
         /* HERO */
         .hero {
             text-align: center;
-            padding: 140px 20px 70px;
+            padding: 140px 20px 90px;
+            background-image:
+                linear-gradient(
+                    to right,
+                    transparent 95%,
+                    var(--blueprint-line) 100%
+                ),
+                linear-gradient(
+                    to bottom,
+                    transparent 95%,
+                    var(--blueprint-line) 100%
+                );
+            background-size: 40px 40px;
         }
 
         .hero-title {
             font-family: Orbitron;
-            font-size: 60px;
+            font-size: 62px;
             font-weight: 700;
-            letter-spacing: 0.15em;
-            margin-bottom: 10px;
+            letter-spacing: 0.28em;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
         }
 
         .hero-sub {
-            font-size: 18px;
-            margin-top: 10px;
-            color: var(--soft-white);
-            letter-spacing: 0.05em;
+            font-size: 17px;
+            letter-spacing: 0.12em;
+            color: #4f7588;
         }
 
         /* SECTIONS */
         section {
-            padding: 70px 20px;
             max-width: 1100px;
             margin: 0 auto;
+            padding: 80px 20px;
         }
 
         h2 {
             font-family: Orbitron;
             font-size: 32px;
+            letter-spacing: 0.12em;
             margin-bottom: 18px;
-            color: var(--soft-white);
+            color: var(--primary-blue);
         }
 
         p {
             font-size: 16px;
-            color: var(--soft-white);
             line-height: 1.7em;
+            color: var(--text-dark);
+            max-width: 780px;
         }
 
+        /* SERVICES */
         .services-grid {
             display: grid;
-            gap: 25px;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            margin-top: 25px;
+            gap: 26px;
+            margin-top: 30px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 22px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s;
+            background: rgba(255,255,255,0.65);
+            padding: 24px;
+            border-radius: 14px;
+            border: 1px solid var(--blueprint-line);
+            transition: 0.35s;
         }
 
         .card:hover {
-            border: 1px solid var(--neon-blue);
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            border-color: var(--primary-blue);
         }
 
         .card h3 {
             font-family: Orbitron;
+            font-size: 18px;
             margin-bottom: 10px;
-            font-size: 20px;
-            color: white;
+            color: var(--primary-blue);
+            letter-spacing: 0.08em;
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 25px;
-            opacity: 0.7;
-            margin-top: 50px;
+            padding: 30px;
+            border-top: 1px solid var(--blueprint-line);
             font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #5c7e8f;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 40px;
+                letter-spacing: 0.18em;
+            }
+
+            .nav-menu {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <div class="nav-inner">
-            <div class="nav-left">
-                <div class="logo-frame">
-                    <img src="pynx-logo-transparent.png" alt="PYNX Logo">
-                </div>
-
-                <div class="nav-title">PYNX WealthTech</div>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <div class="logo-frame">
+                <img src="pynx-logo-transparent.png" alt="PYNX">
             </div>
+            <div class="nav-title">PYNX WEALTHTECH</div>
+        </div>
 
-            <div class="nav-menu">
-                <a class="nav-link" href="#home">Home</a>
-                <a class="nav-link" href="#about">About</a>
-                <a class="nav-link" href="#services">Services</a>
-                <a class="nav-link" href="#founder">Founder</a>
-                <a class="nav-link" href="#contact">Contact</a>
-            </div>
+        <div class="nav-menu">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#services">Services</a>
+            <a class="nav-link" href="#founder">Founder</a>
+            <a class="nav-link" href="#contact">Contact</a>
         </div>
     </div>
+</div>
 
-    <!-- HERO -->
-    <div class="hero" id="home">
-        <div class="hero-title">PYNX WEALTHTECH</div>
-        <div class="hero-sub">Wealth-Tech for the Future</div>
-    </div>
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="hero-title">PYNX</div>
+    <div class="hero-sub">WealthTech for the Future</div>
+</div>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>About Us</h2>
-        <p>
-            PYNX WealthTech ek future-ready system-building platform hai jo automation, structure,
-            discipline aur rule-based trading ko priority deta hai. Hamara vision: Every trader should
-            operate with a system, not emotion.
-        </p>
-    </section>
+<!-- ABOUT -->
+<section id="about">
+    <h2>ABOUT US</h2>
+    <p>
+        PYNX WealthTech ek future-ready system-driven platform hai jo automation,
+        structure aur discipline ko priority deta hai.  
+        Yaha trading emotion se nahi — systems se hoti hai.
+    </p>
+</section>
 
-    <!-- SERVICES -->
-    <section id="services">
-        <h2>Our Services</h2>
+<!-- SERVICES -->
+<section id="services">
+    <h2>SERVICES</h2>
 
-        <div class="services-grid">
-
-            <div class="card">
-                <h3>Crypto Market Automation</h3>
-                <p>Automated engines for BTC, ETH, SOL with volatility logic, ATR stops & smart exits.</p>
-            </div>
-
-            <div class="card">
-                <h3>Stock Market Algo Trading</h3>
-                <p>Trend + breakout systems for NIFTY, BANKNIFTY, NAS100 with professional rules.</p>
-            </div>
-
-            <div class="card">
-                <h3>Gold (XAUUSD) & FX Systems</h3>
-                <p>High-volatility models built with multi-timeframe logic & session-based planning.</p>
-            </div>
-
-            <div class="card">
-                <h3>Custom Trading Bots</h3>
-                <p>Full MT5 automation, Telegram/WhatsApp alerts, Python bots & custom strategies.</p>
-            </div>
-
+    <div class="services-grid">
+        <div class="card">
+            <h3>Crypto Automation</h3>
+            <p>BTC, ETH aur SOL ke liye rule-based automated trading engines.</p>
         </div>
-    </section>
 
-    <!-- FOUNDER -->
-    <section id="founder">
-        <h2>Founder</h2>
-        <p>
-            <b>Krunal Chawada</b> — Systems Designer & Market Structure Specialist.<br>
-            Focus: Rule-based execution, liquidity mapping, disciplined trading psychology.
-        </p>
-    </section>
+        <div class="card">
+            <h3>Stock Market Systems</h3>
+            <p>NIFTY, BANKNIFTY aur indices ke liye structured strategies.</p>
+        </div>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>
-            📍 India (IST)<br>
-            📱 WhatsApp: +91 93270 27629<br><br>
-            Automation, bot development & serious trading setups ke liye direct connect karein.
-        </p>
-    </section>
+        <div class="card">
+            <h3>Gold & FX Models</h3>
+            <p>XAUUSD & forex ke liye multi-timeframe professional setups.</p>
+        </div>
 
-    <footer>
-        © 2025 PYNX WealthTech — All Rights Reserved
-    </footer>
+        <div class="card">
+            <h3>Custom Trading Bots</h3>
+            <p>Python, MT5, alerts, dashboards aur full automation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+    <h2>FOUNDER</h2>
+    <p>
+        <strong>Krunal Chawada</strong><br>
+        Systems Designer & Market Structure Specialist  
+        <br><br>
+        Focus: Rule-based execution, discipline aur long-term scalability.
+    </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>CONTACT</h2>
+    <p>
+        📍 India (IST)<br>
+        📱 WhatsApp: +91 93270 27629<br><br>
+        Serious automation aur institutional-style systems ke liye connect karein.
+    </p>
+</section>
+
+<footer>
+    © 2025 PYNX WealthTech — All Rights Reserved
+</footer>
 
 </body>
-
 </html>
