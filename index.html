@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PYNX WealthTech</title>
+    <title>PYNX</title>
 
-    <!-- Orbitron Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -16,127 +16,37 @@
             --text-dark: #08384d;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background:
-                linear-gradient(135deg,
-                    rgba(255,255,255,0.7),
-                    rgba(207,233,246,0.95)
-                );
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(207, 233, 246, 0.95));
             color: var(--text-dark);
         }
 
-        /* NAVBAR */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--blueprint-line);
-        }
-
-        .nav-inner {
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .logo-frame {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.6);
-        }
-
-        .logo-frame img {
-            width: 70%;
-        }
-
-        .nav-title {
-            font-family: Orbitron;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            color: var(--primary-blue);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 28px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            font-family: Orbitron;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            color: var(--text-dark);
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        .nav-link:hover {
-            opacity: 1;
-            color: var(--primary-blue);
-        }
-
-        /* HERO */
+        /* HERO (top section) */
         .hero {
             text-align: center;
-            padding: 140px 20px 90px;
+            padding: 90px 20px 50px; /* height reduced from 140px */
             background-image:
-                linear-gradient(
-                    to right,
-                    transparent 95%,
-                    var(--blueprint-line) 100%
-                ),
-                linear-gradient(
-                    to bottom,
-                    transparent 95%,
-                    var(--blueprint-line) 100%
-                );
+                linear-gradient(to right, transparent 95%, var(--blueprint-line) 100%),
+                linear-gradient(to bottom, transparent 95%, var(--blueprint-line) 100%);
             background-size: 40px 40px;
         }
 
         .hero-title {
             font-family: Orbitron;
-            font-size: 62px;
+            font-size: 58px;
             font-weight: 700;
             letter-spacing: 0.28em;
             color: var(--primary-blue);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        .hero-sub {
-            font-size: 17px;
-            letter-spacing: 0.12em;
-            color: #4f7588;
-        }
-
-        /* SECTIONS */
+        /* Sections */
         section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         h2 {
@@ -150,11 +60,10 @@
         p {
             font-size: 16px;
             line-height: 1.7em;
-            color: var(--text-dark);
             max-width: 780px;
         }
 
-        /* SERVICES */
+        /* Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -163,7 +72,7 @@
         }
 
         .card {
-            background: rgba(255,255,255,0.65);
+            background: rgba(255, 255, 255, 0.65);
             padding: 24px;
             border-radius: 14px;
             border: 1px solid var(--blueprint-line);
@@ -183,7 +92,6 @@
             letter-spacing: 0.08em;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 30px;
@@ -191,110 +99,74 @@
             font-size: 14px;
             color: #5c7e8f;
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 40px;
-                letter-spacing: 0.18em;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="nav-inner">
-        <div class="nav-left">
-            <div class="logo-frame">
-                <img src="pynx-logo-transparent.png" alt="PYNX">
+    <!-- HERO WITHOUT NAVBAR -->
+    <div class="hero">
+        <div class="hero-title">PYNX</div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>ABOUT US</h2>
+        <p>
+            PYNX ek future-ready system-driven platform hai jo automation, structure aur discipline ko priority deta hai.
+            Yaha trading emotion se nahi — systems se hoti hai.
+        </p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <h2>SERVICES</h2>
+
+        <div class="services-grid">
+            <div class="card">
+                <h3>Crypto Automation</h3>
+                <p>BTC, ETH aur SOL ke liye rule-based automated trading engines.</p>
             </div>
-            <div class="nav-title">PYNX WEALTHTECH</div>
+
+            <div class="card">
+                <h3>Stock Market Systems</h3>
+                <p>NIFTY, BANKNIFTY aur indices ke liye structured strategies.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gold & FX Models</h3>
+                <p>XAUUSD & forex ke liye multi-timeframe professional setups.</p>
+            </div>
+
+            <div class="card">
+                <h3>Custom Trading Bots</h3>
+                <p>Python, MT5, alerts, dashboards aur full automation.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="nav-menu">
-            <a class="nav-link" href="#home">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#services">Services</a>
-            <a class="nav-link" href="#founder">Founder</a>
-            <a class="nav-link" href="#contact">Contact</a>
-        </div>
-    </div>
-</div>
+    <!-- FOUNDER -->
+    <section id="founder">
+        <h2>FOUNDER</h2>
+        <p>
+            <strong>Krunal Chawada</strong><br>
+            Systems Designer & Market Structure Specialist.
+        </p>
+    </section>
 
-<!-- HERO -->
-<div class="hero" id="home">
-    <div class="hero-title">PYNX</div>
-    <div class="hero-sub">WealthTech for the Future</div>
-</div>
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>CONTACT</h2>
+        <p>
+            📱 WhatsApp: +91 93270 27629<br>
+            Automation aur professional systems ke liye connect karein.
+        </p>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-    <h2>ABOUT US</h2>
-    <p>
-        PYNX WealthTech ek future-ready system-driven platform hai jo automation,
-        structure aur discipline ko priority deta hai.  
-        Yaha trading emotion se nahi — systems se hoti hai.
-    </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-    <h2>SERVICES</h2>
-
-    <div class="services-grid">
-        <div class="card">
-            <h3>Crypto Automation</h3>
-            <p>BTC, ETH aur SOL ke liye rule-based automated trading engines.</p>
-        </div>
-
-        <div class="card">
-            <h3>Stock Market Systems</h3>
-            <p>NIFTY, BANKNIFTY aur indices ke liye structured strategies.</p>
-        </div>
-
-        <div class="card">
-            <h3>Gold & FX Models</h3>
-            <p>XAUUSD & forex ke liye multi-timeframe professional setups.</p>
-        </div>
-
-        <div class="card">
-            <h3>Custom Trading Bots</h3>
-            <p>Python, MT5, alerts, dashboards aur full automation.</p>
-        </div>
-    </div>
-</section>
-
-<!-- FOUNDER -->
-<section id="founder">
-    <h2>FOUNDER</h2>
-    <p>
-        <strong>Krunal Chawada</strong><br>
-        Systems Designer & Market Structure Specialist  
-        <br><br>
-        Focus: Rule-based execution, discipline aur long-term scalability.
-    </p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-    <h2>CONTACT</h2>
-    <p>
-        📍 India (IST)<br>
-        📱 WhatsApp: +91 93270 27629<br><br>
-        Serious automation aur institutional-style systems ke liye connect karein.
-    </p>
-</section>
-
-<footer>
-    © 2025 PYNX WealthTech — All Rights Reserved
-</footer>
+    <footer>
+        © 2025 PYNX — All Rights Reserved
+    </footer>
 
 </body>
+
 </html>
